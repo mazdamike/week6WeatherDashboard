@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+
+
+
+
+<body>
+    <!--Start container-->
+    <div class="container">
+
+        <!--Start card-->
+        <div class="card myheader">
+            <h2 class="card-header text-white bg-dark my-title">Weather Dashboard</h2>
+            <div class="row">
+            <!--Start card body-->
+            <div class="card-body">
+               
+                
+                
+                    <div class="col-3">
+                
+<div style="float: left;">
+                 <!--Start form-->
+                 <form>
+                    <div class="form-row">
+                        <div style="width: 10rem; margin-right: 1rem;">
+                            <input type="text" class="form-control" placeholder="City" id="city">
+                        </div>
+                        <div style="width: 2rem;">
+                            <button type="submit" class="btn btn-primary" id="searchBtn">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <!--End form-->
+
+                 <!--Start city list-->
+                 <div class="card" style="width: 15rem; margin-top: 15px;">
+                    <ul class="list-group list-group-flush" id="cityList">
+                    </ul>
+                </div>
+                <!--End city list-->
+           
+                </div>
+                
+
+                    </div>
+                    <!--End first column-->
+
+                    <div class="col-12">
+
+                        <div style="float: right;">
+                      <!--Start weather area-->
+                <div class="card" style="width: 50rem;">
+                    <div class="card-body">
+                        <p class="card-text city"></p>
+                        <p class="card-text tempF"></p>
+                        <p class="card-text humidity"></p>
+                        <p class="card-text wind"></p>
+                        <p class="card-text uvindex"></p>
+                        <p class="card-text"></p>
+                        
+                    </div>
+                </div>
+                <!--End weather area-->
+                    
+                    <!--Start five day forecast area-->
+                <div class="card" style="margin-top: 15px; width: 50rem;">
+                    <div class="card-body">
+                        <p class="card-text">Five day forecast</p>
+                        <p class="card-text">Five day forecast</p>
+                        <p class="card-text">Five day forecast</p>
+                        <p class="card-text">Five day forecast</p>
+                        <p class="card-text">Five day forecast</p>
+                    </div>
+                </div>
+                <!--End five day forecast area-->
+                </div>
+                
+                    </div>
+                    <!--End column two-->
+
+
+
+
+                
+            
+                
+                
+            </div>
+            <!--End card body-->
+        </div> 
+        <!--End row-->
+        </div>
+        <!--End card-->
+
+    </div>
+    <!--End container-->
+    <script src="./script.js"></script>
+</body>
+
+</html>
