@@ -17,14 +17,12 @@ $("button").on("click", function() {
         url: queryURL,
         method: "GET"
       })
-        
         .then(function(response) {
               
           // Convert the temperature in kelvin to fahrenheit
           var tempF = (response.main.temp - 273.15) * 1.80 + 32;
           var condIcon = response.weather[0].icon;
           var w = "http://openweathermap.org/img/wn/" + condIcon + ".png";
-
 
           // add temp content to html
           $(".city").html("<h2>" + response.name + " " + moment().format("L") + " " + "<img src= '" + w + "'></img></h2>");
@@ -37,10 +35,18 @@ $("button").on("click", function() {
            $("#cityList").prepend(cityListItem);
            localStorage.setItem(city, JSON.stringify(response));
 
-
            // Function to display weather when an item in the list is clicked
           $("li").on("click", function() {
-          console.log("a city was clicked");
+          var cityObj = JSON.parse(localStorage.getItem(this.innerHTML));
+          var tempF2 = (cityObj.main.temp - 273.15) * 1.80 + 32;
+          var condIcon2 = cityObj.weather[0].icon;
+          var w2 = "http://openweathermap.org/img/wn/" + condIcon2 + ".png";
+          
+          $(".city").html("<h2>" + cityObj.name + " " + moment().format("L") + " " + "<img src= '" + w2 + "'></img></h2>");
+          $(".tempF").text("Temperature (F): " + tempF2.toFixed(2));
+          $(".humidity").text("Humidity: " + cityObj.main.humidity);
+          $(".wind").text("Wind Speed: " + cityObj.wind.speed);
+
           });
       });
 });
