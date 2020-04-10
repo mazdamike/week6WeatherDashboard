@@ -5,3 +5,9 @@
 .my-title {
     text-align: center;
 }
+
+li:hover {
+   cursor: pointer;
+   background-color: lightgrey;
+   color: white;
+}

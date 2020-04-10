@@ -1,7 +1,8 @@
-for (var i = 0; i < localStorage.length; i++) {
-  var cityInStorage = $("<li class='list-group-item'>" + localStorage.getItem(localStorage.key(i)) + "</li>");
-  $("#cityList").append(cityInStorage);
-}
+// for (var i = 0; i < localStorage.length; i++) {
+//   var cityInStorage = $("<li class='list-group-item'>" + JSON.parse(localStorage.getItem(localStorage.key(i))) + "</li>");
+//   $("#cityList").append(cityInStorage);
+// }
+
 
 
 $("button").on("click", function() {
@@ -12,22 +13,13 @@ $("button").on("click", function() {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
     "q=" + city + "&appid=" + APIKey;
     
-    
-
-    // Append cities to the list, add to local storage, and push to the cities array
-    var cityListItem = $("<li class='list-group-item'>" + city + "</li>");
-    $("#cityList").prepend(cityListItem);
-    localStorage.setItem(city, city);
-    
-
-    $.ajax({
+        $.ajax({
         url: queryURL,
         method: "GET"
       })
         
         .then(function(response) {
               
-          console.log(response);
           // Convert the temperature in kelvin to fahrenheit
           var tempF = (response.main.temp - 273.15) * 1.80 + 32;
           var condIcon = response.weather[0].icon;
@@ -40,31 +32,17 @@ $("button").on("click", function() {
           $(".humidity").text("Humidity: " + response.main.humidity);
           $(".wind").text("Wind Speed: " + response.wind.speed);
          
-          
-    
-          
-          
-          
-    
-          // Log the data in the console as well
-          console.log("Temperature (F): " + tempF);
-          console.log("Wind Speed: " + response.wind.speed);
-          console.log("Humidity: " + response.main.humidity);
-          
-        });
+          // Append cities to the list and add to local storage
+           var cityListItem = $("<li class='list-group-item'>" + city + "</li>");
+           $("#cityList").prepend(cityListItem);
+           localStorage.setItem(city, JSON.stringify(response));
 
+
+           // Function to display weather when an item in the list is clicked
+          $("li").on("click", function() {
+          console.log("a city was clicked");
+          });
+      });
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
