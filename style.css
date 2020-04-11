@@ -11,3 +11,26 @@ li:hover {
    background-color: lightgrey;
    color: white;
 }
+
+.uvStyleGreen {
+    background-color: green;
+    color: white;
+    font-weight: bolder;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.uvStyleRed {
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.uvStyleYellow {
+    background-color: yellow;
+    font-weight: bolder;
+    padding: 5px;
+    border-radius: 6px;
+}
