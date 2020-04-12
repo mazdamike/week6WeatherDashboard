@@ -20,7 +20,7 @@ $("button").on("click", function (event) {
       // Convert the temperature in kelvin to fahrenheit
       var tempF = (response.main.temp - 273.15) * 1.80 + 32;
       var condIcon = response.weather[0].icon;
-      var w = "http://openweathermap.org/img/wn/" + condIcon + ".png";
+      var w = "https://openweathermap.org/img/wn/" + condIcon + ".png";
 
       // add temp content to html
       $(".city").html("<h2>" + response.name + " " + moment().format("L") + " " + "<img src= '" + w + "'></img></h2>");
@@ -31,7 +31,7 @@ $("button").on("click", function (event) {
       // Get and display the UV index
       var lat = response.coord.lat;
       var long = response.coord.lon;
-      var queryURLuv = "http://api.openweathermap.org/data/2.5/uvi?&lat=" + lat + "&lon=" + long + "&appid=" + APIKey;
+      var queryURLuv = "https://api.openweathermap.org/data/2.5/uvi?&lat=" + lat + "&lon=" + long + "&appid=" + APIKey;
 
       // Second API call to get the UV index
       $.ajax({
@@ -77,7 +77,7 @@ $("button").on("click", function (event) {
                 var icon5 = responseThree.list[i].weather[0].icon;
                 var tempF5 = (responseThree.list[i].main.temp - 273.15) * 1.80 + 32;
                 var humidity5 = responseThree.list[i].main.humidity;
-                var f = "http://openweathermap.org/img/wn/" + icon5 + ".png";
+                var f = "https://openweathermap.org/img/wn/" + icon5 + ".png";
 
                 $("#date" + i).text(date5);
                 $("#wexIcon" + i).html("<img src= '" + f + "'></img>");
@@ -92,7 +92,7 @@ $("button").on("click", function (event) {
             var cityObj = JSON.parse(localStorage.getItem(this.innerHTML));
             var tempF2 = (cityObj.main.temp - 273.15) * 1.80 + 32;
             var condIcon2 = cityObj.weather[0].icon;
-            var w2 = "http://openweathermap.org/img/wn/" + condIcon2 + ".png";
+            var w2 = "https://openweathermap.org/img/wn/" + condIcon2 + ".png";
             var uvKey = this.innerHTML + "UV";
 
             $(".city").html("<h2>" + cityObj.name + " " + moment().format("L") + " " + "<img src= '" + w2 + "'></img></h2>");
