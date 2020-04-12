@@ -1,16 +1,3 @@
-// var cityInStorage = $("<li class='list-group-item'>" + JSON.parse(localStorage.getItem(localStorage.key(0))) + "</li>");
-// $("#cityList").append(cityInStorage);
-
-
-//   var keyName = window.localStorage.key(0);
-//   if (keyName !== null) {
-//   console.log(keyName);
-//   var cityInStorage = $("<li class='list-group-item'>" + keyName + "</li>");
-//   $("#cityList").append(cityInStorage);
-// }
-
-
-
 // Main click function that gets and stores the weather and UV index
 $("button").on("click", function (event) {
   event.preventDefault();
@@ -72,6 +59,11 @@ $("button").on("click", function (event) {
           localStorage.setItem(city + "UV", uvIndex);
 
           //Display five-day forecast
+          var city5 = $("#city").val();
+          var APIKey = "3c71682f4f047f87294d0577dc780b8d";
+          var queryURLFive = "https://api.openweathermap.org/data/2.5/forecast?" +
+            "q=" + city5 + "&appid=" + APIKey;
+
           $.ajax({
             url: queryURLFive,
             method: "GET"
@@ -79,19 +71,21 @@ $("button").on("click", function (event) {
             .then(function (responseThree) {
               console.log(responseThree);
 
+              for (var i = 3; i < 36; i += 8) {
 
+                var date5 = responseThree.list[i].dt_txt;
+                var icon5 = responseThree.list[i].weather[0].icon;
+                var tempF5 = (responseThree.list[i].main.temp - 273.15) * 1.80 + 32;
+                var humidity5 = responseThree.list[i].main.humidity;
+                var f = "http://openweathermap.org/img/wn/" + icon5 + ".png";
 
+                $("#date" + i).text(date5);
+                $("#wexIcon" + i).html("<img src= '" + f + "'></img>");
+                $("#tempFiveDay" + i).text("Temp:(F): " + tempF5.toFixed(2));
+                $("#humidityFiveDay" + i).text("Humidity: " + humidity5);
 
+              }
             });
-
-
-
-
-
-
-
-
-
 
           // Function to display weather and UV index when an item in the list is clicked
           $("li").on("click", function () {
@@ -118,31 +112,5 @@ $("button").on("click", function (event) {
           });
 
         });
-
-
-      // $("li").on("click", function () {
-      //   var cityObj = JSON.parse(localStorage.getItem(this.innerHTML));
-      //   var tempF2 = (cityObj.main.temp - 273.15) * 1.80 + 32;
-      //   var condIcon2 = cityObj.weather[0].icon;
-      //   var w2 = "http://openweathermap.org/img/wn/" + condIcon2 + ".png";
-      //   var uvKey = this.innerHTML + "uv";
-
-
-
-      // // Give the UV index a background color depending on severity
-      // if (uvIndex <= 3) {
-      //   $(".uvindex").html("UV Index: <span class='uvStyleGreen'>" + localStorage.getItem(uvKey) + "</span>");
-      // } else if (uvIndex >= 6) {
-      //   $(".uvindex").html("UV Index: <span class='uvStyleRed'>" + localStorage.getItem(uvKey) + "</span>");
-      // } else {
-      //   $(".uvindex").html("UV Index: <span class='uvStyleYellow'>" + localStorage.getItem(uvKey) + "</span>");
-      // }
-
-
-
-
-      // });
     });
 });
-
-

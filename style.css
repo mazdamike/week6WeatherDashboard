@@ -34,3 +34,8 @@ li:hover {
     padding: 5px;
     border-radius: 6px;
 }
+
+.fiveDayCard {
+    background-color: blue;
+    color: white;
+}
